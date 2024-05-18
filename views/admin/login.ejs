@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('../partials/headerVendor.ejs')%>
+  </head>
+
+  <body>
+    <!-- Main Wrapper -->
+    <div class="main-wrapper log-wrap">
+      <div class="row">
+        <!-- Login Banner -->
+        <div class="col-md-6 login-bg">
+          <%- include("../partials/sliderLoginRegister.ejs") %>
+        </div>
+        <!-- /Login Banner -->
+
+        <div class="col-md-6 login-wrap-bg">
+          <!-- Login -->
+          <div class="login-wrapper">
+            <div class="loginbox">
+              <div class="w-100">
+                <div class="img-logo">
+                  <img src="images/logo.png" class="img-fluid" alt="Logo" />
+                  <div class="back-home">
+                    <a href="/">Back to Home</a>
+                  </div>
+                </div>
+                <h1>Sign into Your Account</h1>
+                <form
+                  method="POST"
+                  action="/login"
+                  class="login-form"
+                  id="loginForm"
+                >
+                  <div class="input-block">
+                    <label class="form-control-label">Email</label>
+                    <input
+                      type="email"
+                      class="form-control"
+                      id="email"
+                      aria-describedby="emailHelp"
+                      name="email"
+                      placeholder="example@email.com"
+                    />
+                  </div>
+                  <div class="input-block">
+                    <label class="form-control-label">Password</label>
+                    <div class="pass-group">
+                      <input
+                        type="password"
+                        class="form-control"
+                        id="password"
+                        name="password"
+                        placeholder="*********"
+                      />
+                      <span class="feather-eye toggle-password"></span>
+                    </div>
+                  </div>
+                  <div class="d-grid">
+                    <button class="btn btn-primary btn-start" type="submit">
+                      Sign In
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <div class="google-bg">
+              <%- include("../partials/contactInfo.ejs") %>
+            </div>
+          </div>
+          <!-- /Login -->
+        </div>
+      </div>
+    </div>
+    <!-- /Main Wrapper -->
+
+    <%- include('../partials/footerVendor.ejs')%>
+    <script>
+      $(document).ready(function () {
+        $("#loginForm").submit(function (event) {
+          event.preventDefault();
+
+          validateAndSubmit();
+        });
+      });
+
+      function validateAndSubmit() {
+        const email = $("#email").val();
+        const password = $("#password").val();
+
+        if (!email || !password) {
+          toastr.error("Please fill in both email and password fields.");
+        } else {
+          $("#loginForm").off("submit").submit();
+        }
+      }
+    </script>
+  </body>
+</html>
