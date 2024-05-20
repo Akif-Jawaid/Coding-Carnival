@@ -10,9 +10,9 @@
   "keywords": [
     "hackathon",
     "coding-carnival",
-    "hibban"
+    "Akif"
   ],
-  "author": "hibbanur rahman",
+  "author": "Akif Jawaid",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.1.1",
